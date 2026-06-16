@@ -1,0 +1,90 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="600"
+             xmlns:vm="using:ControllerApp.ViewModels"
+             x:DataType="vm:StartPageViewModel"
+             x:Class="ControllerApp.Views.StartPageView">
+
+    <Border MaxWidth="600" MinWidth="300" CornerRadius="15" Background="Gray">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Los Gatos 3D Studio" FontSize="24" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" Foreground="Purple"/>
+
+            <StackPanel Grid.Row="1" Orientation="Vertical">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Consignação" FontSize="14" FontWeight="Bold"
+                               HorizontalAlignment="Center" Foreground="LightGreen"/>
+
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding Consignments}" Margin="10">
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel  HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="250" Height="100" Margin="5" CornerRadius="5" BorderBrush="LightGreen" BorderThickness="2">
+                                    <Grid>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Code}" />
+                                            <TextBlock Text="{Binding Name}" />
+                                        </StackPanel>
+                                        <Button Content="View" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5"/>
+                                        <!--<BUTT Content="View" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Command="{Binding DataContext.ViewConsignmentCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" />-->
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+                <Grid Background="LightGreen" Margin="15 0 15 0" Height="2"/>
+
+                <Grid Margin="15">
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Border Width="250" Margin="5" CornerRadius="5" Background="LightGreen">
+                            <Grid VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Base Produtos" VerticalAlignment="Center"/>
+                                <Button Grid.Column="1" Content="View" Width="80" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <!--<BUTT Content="View" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Command="{Binding DataContext.ViewConsignmentCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" />-->
+                        </Border>
+
+                        <Border Width="250" Margin="5" CornerRadius="5" Background="LightGreen">
+                            <Grid VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Fila de Impressão" VerticalAlignment="Center"/>
+                                <Button Grid.Column="1" Content="View" Width="80" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <!--<BUTT Content="View" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Command="{Binding DataContext.ViewConsignmentCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" />-->
+                        </Border>
+                    </WrapPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
