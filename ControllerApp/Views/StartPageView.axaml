@@ -5,6 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="600"
              xmlns:vm="using:ControllerApp.ViewModels"
              x:DataType="vm:StartPageViewModel"
+             x:Name="Root"
              x:Class="ControllerApp.Views.StartPageView">
 
     <Border MaxWidth="600" MinWidth="300" CornerRadius="15" Background="Gray">
@@ -23,7 +24,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="Consignação" FontSize="14" FontWeight="Bold"
+                    <TextBlock Text="ConsignaÃ§Ã£o" FontSize="14" FontWeight="Bold"
                                HorizontalAlignment="Center" Foreground="LightGreen"/>
 
                     <ItemsControl Grid.Row="1" ItemsSource="{Binding Consignments}" Margin="10">
@@ -42,7 +43,20 @@
                                             <TextBlock Text="{Binding Code}" />
                                             <TextBlock Text="{Binding Name}" />
                                         </StackPanel>
-                                        <Button Content="View" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5"/>
+
+                                        <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+
+                                             <Button Grid.Column="0" Content="Delete" HorizontalAlignment="Left" Margin="5" Background="Salmon"
+                                                Command="{Binding #Root.DataContext.DeleteLocalConsignment}" CommandParameter="{Binding}"/>
+
+                                             <Button Grid.Column="1" Content="View" HorizontalAlignment="Right" Margin="5"
+                                                Command="{Binding #Root.DataContext.ViewConsignmentCommand}" CommandParameter="{Binding}"/>
+                                    </Grid>
+                                       
                                         <!--<BUTT Content="View" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Command="{Binding DataContext.ViewConsignmentCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" />-->
                                     </Grid>
                                 </Border>
@@ -50,6 +64,11 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </Grid>
+
+                <Button Grid.Column="1" Width="35" Height="35" VerticalAlignment="Center" Padding="0" CornerRadius="50" Margin="10" Background="LightGreen"
+                        Command="{Binding #Root.DataContext.CreateConsignment}">
+                    <Label Content="+" Padding="0" FontSize="20" Opacity="0.8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
 
                 <Grid Background="LightGreen" Margin="15 0 15 0" Height="2"/>
 
@@ -62,8 +81,10 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0" Text="Base Produtos" VerticalAlignment="Center"/>
-                                <Button Grid.Column="1" Content="View" Width="80" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="0" Text="Base de produtos" VerticalAlignment="Center"/>
+                                <Button Grid.Column="1" Width="70" VerticalAlignment="Center" Padding="2">
+                                    <Label Content="-->" Padding="0" FontSize="20" Opacity="0.8" HorizontalAlignment="Right"/>
+                                </Button>
                             </Grid>
 
                             <!--<BUTT Content="View" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Command="{Binding DataContext.ViewConsignmentCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" />-->
@@ -76,8 +97,10 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0" Text="Fila de Impressão" VerticalAlignment="Center"/>
-                                <Button Grid.Column="1" Content="View" Width="80" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="0" Text="Fila de ImpressÃ£o" VerticalAlignment="Center"/>
+                                <Button Grid.Column="1" Width="70" VerticalAlignment="Center" Padding="2">
+                                    <Label Content="-->" Padding="0" FontSize="20" Opacity="0.8" HorizontalAlignment="Right"/>
+                                </Button>
                             </Grid>
 
                             <!--<BUTT Content="View" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Command="{Binding DataContext.ViewConsignmentCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" />-->

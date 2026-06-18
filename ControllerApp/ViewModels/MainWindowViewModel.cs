@@ -1,15 +1,43 @@
-﻿namespace ControllerApp.ViewModels
+﻿using Avalonia.Controls;
+using Avalonia.Platform.Storage;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using ControllerApp.Models;
+using System.Threading.Tasks;
+
+namespace ControllerApp.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        public string Greeting { get; } = "Welcome to Avalonia!";
-
-        public IViewModel CurrentView { get; set; }
-
+        [ObservableProperty]
+        private IViewModel currentView;
 
         public MainWindowViewModel()
         {
-            CurrentView = new StartPageViewModel();
+            ShowStartPageView();
+        }
+
+        [RelayCommand]
+        public async Task ResetBaseCommand()
+        {
+            await Consignment.UpdateLocalData();
+            ShowStartPageView();
+        }
+
+        [RelayCommand]
+        public async Task CommitToRemoteBaseCommand()
+        {
+            await Consignment.CommitToRemoteBase();
+        }
+
+        public void ShowStartPageView()
+        {
+            CurrentView = new StartPageViewModel(this);
+        }
+
+        public void ShowCreateConsignmentView()
+        {
+            CurrentView = new CreateConsignmentViewModel(this);
         }
     }
 }

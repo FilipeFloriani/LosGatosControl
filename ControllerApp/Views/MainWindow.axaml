@@ -12,13 +12,25 @@
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Grid>
-        <Border MaxWidth="600" MinWidth="300" Margin="15" Background="Gray" CornerRadius="15">
+    <Grid MaxWidth="600" MinWidth="300">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Padding="0" Content="Import Remote Base" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Command="{Binding ResetBaseCommand}"/>
+            <Button Padding="0" Content="Commit to Remote Base" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Command="{Binding CommitToRemoteBaseCommand}" Margin="5 0 0 0"/>
+        </StackPanel>
+
+        <Border Grid.Row="1" Margin="5" Background="Gray" CornerRadius="15">
             <ContentControl Content="{Binding CurrentView}" />
-        </Border>    
-    </Grid>
+        </Border>
+</Grid>
 </Window>

@@ -1,19 +1,49 @@
-﻿using ControllerApp.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using ControllerApp.Models;
+using ControllerApp.Repository;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Windows.Input;
 
 namespace ControllerApp.ViewModels
 {
-    public class StartPageViewModel : ViewModelBase, IViewModel
+    public partial class StartPageViewModel : ViewModelBase, IViewModel
     {
-        public ObservableCollection<Consignment> Consignments { get; set; } = [];
+        MainWindowViewModel _mainVM;
 
-        public StartPageViewModel()
+        [ObservableProperty]
+        private ObservableCollection<Consignment> consignments;
+
+        [RelayCommand]
+        public void CreateConsignment()
         {
-              Consignments.Add(new Consignment { Code = "C001", Name = "Consignment 1" });
-              Consignments.Add(new Consignment { Code = "C002", Name = "Consignment 2" });
-              Consignments.Add(new Consignment { Code = "C003", Name = "Consignment 3" });
-              Consignments.Add(new Consignment { Code = "C004", Name = "Consignment 4" });
-              Consignments.Add(new Consignment { Code = "C005", Name = "Consignment 5" });
+            _mainVM.ShowCreateConsignmentView();
+        }
+
+        [RelayCommand]
+        public void DeleteLocalConsignment(Consignment consignment)
+        {
+            Consignment.DeleteLocalConsignment(consignment);
+            UpdateConsignments();
+        }
+
+        [RelayCommand]
+        public void ViewConsignmentCommand(object param)
+        {
+
+        }
+
+        public StartPageViewModel(MainWindowViewModel mainVM)
+        {
+            _mainVM = mainVM;
+
+            UpdateConsignments();
+        }
+
+        private void UpdateConsignments()
+        {
+            Consignments = [.. Consignment.FindAllLocalConsignment()];
         }
     }
 }

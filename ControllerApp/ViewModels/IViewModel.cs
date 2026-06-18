@@ -1,6 +1,6 @@
 ﻿namespace ControllerApp.ViewModels
 {
-    public interface IViewModel
+    public partial interface IViewModel
     {
     }
 }
