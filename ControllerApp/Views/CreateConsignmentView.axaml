@@ -6,27 +6,27 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:ControllerApp.ViewModels"
              x:DataType="vm:CreateConsignmentViewModel"
-             x:Class="ControllerApp.Views.CreateConsignmentView">
-    <Border MaxWidth="600" MinWidth="300" CornerRadius="15" Background="Gray">
+             x:Class="ControllerApp.Views.CreateConsignmentView" Background="{StaticResource ResourceKey=Background1Brush}">
+    <Border MaxWidth="600" MinWidth="300" CornerRadius="15">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Criar novo local para consignação" FontSize="24" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" Foreground="Purple"/>
+            <TextBlock Text="Criar novo local para consignação" FontSize="24" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" Foreground="{StaticResource ResourceKey=AppPurple}"/>
 
             <StackPanel Grid.Row="1" Margin="20">
-                <TextBlock Text="Código da Consignação:" FontSize="14" FontWeight="Bold" Margin="0,10,0,5" Foreground="LightGreen"/>
+                <TextBlock Text="Código da Consignação:" FontSize="14" FontWeight="Bold" Margin="0,10,0,5" Foreground="{StaticResource ResourceKey=AppGreen}"/>
                 <TextBox Text="{Binding #Root.DataContext.Consignment.Code}" Margin="0,0,0,10" Width="100" HorizontalAlignment="Left"/>
-                <TextBlock Text="Nome da Consignação:" FontSize="14" FontWeight="Bold" Margin="0,10,0,5" Foreground="LightGreen"/>
+                <TextBlock Text="Nome da Consignação:" FontSize="14" FontWeight="Bold" Margin="0,10,0,5" Foreground="{StaticResource ResourceKey=AppGreen}"/>
                 <TextBox Text="{Binding #Root.DataContext.Consignment.Name}" Margin="0,0,0,10"/>
 
                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Center">
-                    <Button Background="LightGreen" Content="Salvar" VerticalAlignment="Center"
+                    <Button Background="{StaticResource ResourceKey=AppGreen}" Content="Salvar" VerticalAlignment="Center"
                             Command="{Binding #Root.DataContext.SaveConsignmentCommand}"/>
-                    <Button Background="Salmon" Content="Cancelar" VerticalAlignment="Center"
-                            Command="{Binding #Root.DataContext.CancelCommand}"/>
+                    <Button Background="{StaticResource ResourceKey=AppWarning}" Content="Cancelar" VerticalAlignment="Center"
+                            Command="{Binding #Root.DataContext.CancelCommand}" Margin="10 0 0 0"/>
                 </StackPanel>
                 
             </StackPanel>

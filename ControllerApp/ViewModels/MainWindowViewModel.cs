@@ -1,8 +1,7 @@
-﻿using Avalonia.Controls;
-using Avalonia.Platform.Storage;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ControllerApp.Models;
+using ControllerApp.Services;
 using System.Threading.Tasks;
 
 namespace ControllerApp.ViewModels
@@ -20,8 +19,11 @@ namespace ControllerApp.ViewModels
         [RelayCommand]
         public async Task ResetBaseCommand()
         {
-            await Consignment.UpdateLocalData();
-            ShowStartPageView();
+            var result = await DialogService.ConfirmAsync(
+                        "Deseja realmente atualizar a base local?");
+
+            //await Consignment.UpdateLocalData();
+            //ShowStartPageView();
         }
 
         [RelayCommand]

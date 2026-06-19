@@ -8,28 +8,26 @@
         x:Class="ControllerApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="ControllerApp">
+        Title="ControllerApp" Background="{StaticResource ResourceKey=Background1Brush}">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-        to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
     <Grid MaxWidth="600" MinWidth="300">
         <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Padding="0" Content="Import Remote Base" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                    Command="{Binding ResetBaseCommand}"/>
-            <Button Padding="0" Content="Commit to Remote Base" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                    Command="{Binding CommitToRemoteBaseCommand}" Margin="5 0 0 0"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+            <Button Padding="5 0" Content="Import Remote Base" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Command="{Binding ResetBaseCommand}" Background="{StaticResource ResourceKey=AppGreen}"/>
+            <Button Padding="5 0" Content="Commit to Remote Base" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Command="{Binding CommitToRemoteBaseCommand}" Margin="5 0 0 0" Background="{StaticResource ResourceKey=AppGreen}"/>
         </StackPanel>
 
-        <Border Grid.Row="1" Margin="5" Background="Gray" CornerRadius="15">
+        <Border Grid.Row="1" Margin="5" CornerRadius="15">
             <ContentControl Content="{Binding CurrentView}" />
         </Border>
 </Grid>

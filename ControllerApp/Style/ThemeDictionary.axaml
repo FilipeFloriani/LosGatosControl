@@ -1,0 +1,25 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Backgrounds -->
+    <Color x:Key="BackgroundDark">#1E1F22</Color>
+    <Color x:Key="Background1">#2B2D31</Color>
+    <Color x:Key="Background2">#3A3D42</Color>
+    <Color x:Key="Background3">#4B5057</Color>
+
+    <!-- Accent Colors -->
+    <!--    <Color x:Key="AccentGreen">#39FF88</Color>
+    <Color x:Key="AccentPurple">#9B5CFF</Color>-->
+
+    <Color x:Key="AccentGreen">#4CAF7D</Color>
+    <Color x:Key="AccentPurple">#8A6CCF</Color>
+
+    <SolidColorBrush x:Key="Background0Brush" Color="{StaticResource BackgroundDark}"/>
+    <SolidColorBrush x:Key="Background1Brush" Color="{StaticResource Background1}"/>
+    <SolidColorBrush x:Key="Background2Brush" Color="{StaticResource Background2}"/>
+    <SolidColorBrush x:Key="Background3Brush" Color="{StaticResource Background3}"/>
+
+    <SolidColorBrush x:Key="AppGreen" Color="{StaticResource AccentGreen}"/>
+    <SolidColorBrush x:Key="AppPurple" Color="{StaticResource AccentPurple}"/>
+    <SolidColorBrush x:Key="AppWarning" Color="Salmon"/>
+</ResourceDictionary>

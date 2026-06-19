@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="ControllerApp.Views.ConfirmationDialog"
+        Width="400"
+        Height="180"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Title="Confirmação"
+        x:DataType="vm:ConfirmationDialogViewModel"
+        xmlns:vm="using:ControllerApp.ViewModels">
+
+    <Border Padding="20"
+            Background="{StaticResource Background1Brush}">
+
+        <Grid RowDefinitions="*,Auto">
+
+            <TextBlock Grid.Row="0"
+                       Text="{Binding Message}"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"/>
+
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="10">
+
+                <Button Content="Sim"
+                        Width="100"
+                        Command="{Binding YesCommand}"/>
+
+                <Button Content="Não"
+                        Width="100"
+                        Command="{Binding NoCommand}"/>
+
+            </StackPanel>
+
+        </Grid>
+
+    </Border>
+</Window>

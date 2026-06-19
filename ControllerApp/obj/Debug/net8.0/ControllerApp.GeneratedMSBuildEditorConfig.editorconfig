@@ -29,6 +29,12 @@ build_property.EnableCodeStyleSeverity =
 [D:/_DevTests/LosGatosControl/ControllerApp/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[D:/_DevTests/LosGatosControl/ControllerApp/Style/ThemeDictionary.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/_DevTests/LosGatosControl/ControllerApp/Views/ConfirmationDialog.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [D:/_DevTests/LosGatosControl/ControllerApp/Views/CreateConsignmentView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
